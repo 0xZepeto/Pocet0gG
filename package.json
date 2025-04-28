@@ -1,14 +1,15 @@
 {
-  "name": "Pocet0G",
+  "name": "Pocet0gG",
   "version": "1.0.0",
-  "description": "Auto Claim Faucet 0g.ai Bot",
+  "description": "Auto claim faucet for 0G AI Faucet",
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js"
   },
   "dependencies": {
-  "axios": "^1.6.0",
-  "dotenv": "^16.4.0",
-  "puppeteer": "^21.3.8",
-  "anticaptcha": "^0.0.7"
+    "axios": "^1.6.0",
+    "dotenv": "^16.4.0",
+    "puppeteer": "^21.3.8",
+    "anticaptcha": "^0.0.7"
+  }
 }
