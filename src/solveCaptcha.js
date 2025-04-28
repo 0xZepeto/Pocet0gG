@@ -1,16 +1,19 @@
-const antiCaptcha = require('@anti-captchaofficial/hcaptcha');
+const anticaptcha = require('anticaptcha')('YOUR_ANTI_CAPTCHA_KEY');
 require('dotenv').config();
 
-antiCaptcha.setAPIKey(process.env.ANTICAPTCHA_KEY);
+anticaptcha.setKey(process.env.ANTICAPTCHA_KEY);
 
 async function solveHcaptcha(websiteURL, websiteKey) {
-    try {
-        const taskId = await antiCaptcha.createTask(websiteURL, websiteKey);
-        const solution = await antiCaptcha.getTaskSolution(taskId);
-        return solution;
-    } catch (error) {
-        console.error('Error solving captcha:', error);
-    }
+    return new Promise((resolve, reject) => {
+        anticaptcha.solveHcaptcha(websiteKey, websiteURL, {}, function (err, token) {
+            if (err) {
+                console.error('Captcha solving error:', err);
+                reject(err);
+            } else {
+                resolve(token);
+            }
+        });
+    });
 }
 
 module.exports = { solveHcaptcha };
